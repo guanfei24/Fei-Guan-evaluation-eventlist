@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="container">
+    <!-- 添加完整的表单结构 -->
+    <form id="event-form">
+        <button type="button" id="addNew">add New Event</button>
+        <table id="event-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="event-list">
+              <!-- Event rows will be dynamically added here -->
+            </tbody>
+            <tfoot id="event-new">
+              <tr>
+              </tr>
+            </tfoot>
+          </table>
+    </form>
+    </div>
+    <!-- 确保先加载 API 文件，再加载功能实现文件 -->
+    <script src="eventAPI.js"></script>
+    <script src="event.js"></script>
+</body>
+</html>
