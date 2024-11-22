@@ -148,7 +148,7 @@ function renderEvents(events, type) {
     try {
         const eventListElem = document.getElementById(type);
         
-        eventListElem.innerHTML = ""; // 清空
+        eventListElem.innerHTML = ""; // clear the list
         
         for (const event of events) {
             const eventElem = createEventElem(event);
