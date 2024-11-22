@@ -18,14 +18,14 @@ body {
   border-radius: 8px;
   }
   
-  #todo-form {
+  #event-form {
     display: flex;
     flex-direction: column;
     margin-right: 20px; 
   }
   
-  #todo-form input,
-  #todo-form button {
+  #event-form input,
+  #event-form button {
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -34,24 +34,24 @@ body {
 
   }
   
-  #todo-form button {
+  #event-form button {
     background: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
   }
   
-  #todo-form button:hover {
+  #event-form button:hover {
     background: #0056b3;
   }
   
-  #todo-list {
+  #event-list {
     list-style: none;
     padding: 0;
     margin-left: 20px; /* 添加表单和列表之间的间隔 */
   }
   
-  #todo-list li {
+  #event-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,11 +59,11 @@ body {
     border-bottom: 1px solid #ccc;
   }
   
-  #todo-list li:last-child {
+  #event-list li:last-child {
     border-bottom: none;
   }
   
-  #todo-list li button {
+  #event-list li button {
     margin-left: 10px; /* 添加按钮之间的间隔 */
   }
   
