@@ -1,33 +1,35 @@
 let addButton = document.createElement("button");
 function createEventElem(event) {
     const eventItemElem = document.createElement("tr");
-    
     // event elem
     const eventElem = document.createElement("td");
-    eventElem.textContent = `${event.eventName}`;
     const startDateElem = document.createElement("td");
-    startDateElem.textContent = `${event.startDate}`;
     const endDateElem = document.createElement("td");
-    endDateElem.textContent = `${event.endDate}`;
-
     //add input field
     // create td node
     const tdEventInput = document.createElement("td");
     const eventInput = document.createElement("input");
-    eventInput.value = event.eventName;
+    
     tdEventInput.appendChild(eventInput);
     //add start date input field
     const tdStartDateInput = document.createElement("td");
     const startDateInput = document.createElement("input");
     startDateInput.type = "date";
-    startDateInput.value = event.startDate;
     tdStartDateInput.appendChild(startDateInput);
     //add end date input field
     const tdEndDateInput = document.createElement("td");
     const endDateInput = document.createElement("input");
     endDateInput.type = "date";
-    endDateInput.value = event.endDate;
     tdEndDateInput.appendChild(endDateInput);
+    //set the input fields
+    if (event !== undefined) {
+        endDateElem.textContent = `${event.endDate}`;
+        eventElem.textContent = `${event.eventName}`;
+        startDateElem.textContent = `${event.startDate}`;
+        startDateInput.value = event.startDate;
+        eventInput.value = event.eventName;
+        endDateInput.value = event.endDate;
+    }
     //save button
     const saveButton = document.createElement("button");
     saveButton.textContent = "Save";
@@ -158,8 +160,31 @@ function renderEvents(events, type) {
         console.error(e);
     }
 }
+//set form elements
+function setFormElements() {
+    const formElem = document.getElementById("event-form");
+    formElem.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const eventName = document.getElementById("event-name").value;
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
 
+        const newEvent = {
+            eventName,
+            startDate,
+            endDate,
+        };
+
+        const res = await eventAPI.postEvent(newEvent);
+        const events = await eventAPI.getEvents();
+        renderEvents(events, "event-list");
+        return res.json;
+    });
+}
+//initialize the app
 (function initApp() {
+    //setFormElements();
+    createEventElem();
     eventAPI.getEvents().then((events) => {
         renderEvents(events, "event-list");
     });
