@@ -9,17 +9,19 @@ function createEventElem(event) {
     // create td node
     const tdEventInput = document.createElement("td");
     const eventInput = document.createElement("input");
-    
+    eventInput.required = true;
     tdEventInput.appendChild(eventInput);
     //add start date input field
     const tdStartDateInput = document.createElement("td");
     const startDateInput = document.createElement("input");
     startDateInput.type = "date";
+    startDateInput.required = true;
     tdStartDateInput.appendChild(startDateInput);
     //add end date input field
     const tdEndDateInput = document.createElement("td");
     const endDateInput = document.createElement("input");
     endDateInput.type = "date";
+    endDateInput.required = true;
     tdEndDateInput.appendChild(endDateInput);
     //set the input fields
     if (event !== undefined) {
@@ -33,7 +35,7 @@ function createEventElem(event) {
     //save button
     const saveButton = document.createElement("button");
     saveButton.textContent = "Save";
-    saveButton.addEventListener("click", async (e) => {
+    saveButton.addEventListener("submit", async (e) => {
         e.preventDefault();
         const newEvent = {
             eventName: eventInput.value,
@@ -110,7 +112,7 @@ function createEventElem(event) {
         //reset the button
         addButton = eventNew.querySelector("button"); 
         //add event listener to the add button
-        addButton.addEventListener("click", async (e) => {
+        addButton.addEventListener("submit", async (e) => {
             e.preventDefault();
             const newEvent = {
                 eventName: eventInput.value,
