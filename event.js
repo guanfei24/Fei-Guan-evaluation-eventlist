@@ -35,7 +35,7 @@ function createEventElem(event) {
     //save button
     const saveButton = document.createElement("button");
     saveButton.textContent = "Save";
-    saveButton.addEventListener("submit", async (e) => {
+    saveButton.addEventListener("click", async (e) => {
         e.preventDefault();
         const newEvent = {
             eventName: eventInput.value,
@@ -101,6 +101,8 @@ function createEventElem(event) {
     addNewEvent.addEventListener("click", async (e) => {
         e.preventDefault();
         eventInput.value = "";
+        startDateInput.value = "";
+        endDateInput.value = "";
         eventNew.appendChild(tdEventInput);
         eventNew.appendChild(tdStartDateInput);
         eventNew.appendChild(tdEndDateInput);
@@ -112,8 +114,12 @@ function createEventElem(event) {
         //reset the button
         addButton = eventNew.querySelector("button"); 
         //add event listener to the add button
-        addButton.addEventListener("submit", async (e) => {
+        addButton.addEventListener("click", async (e) => {
             e.preventDefault();
+            if(eventInput.value === "" || startDateInput.value === "" || endDateInput.value === "") {
+                alert("Please fill in all fields");
+                return;
+            }
             const newEvent = {
                 eventName: eventInput.value,
                 startDate: startDateInput.value,
