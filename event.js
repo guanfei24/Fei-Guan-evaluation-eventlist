@@ -68,7 +68,6 @@ function createEventElem(event) {
         tdEndDateInput.remove();
         saveButton.remove();
         cancelButton.remove();
-        addButton.remove();
 
         eventItemElem.appendChild(eventElem);
         eventItemElem.appendChild(startDateElem);
