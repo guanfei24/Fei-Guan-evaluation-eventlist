@@ -143,7 +143,6 @@ function createNewEvent() {
         eventNew.remove();
         eventListElem.innerHTML = "";
         console.log(eventListElem.innerHTML);
-
     });
     tdButtons.appendChild(cancelButton);
     //add event listener to the add button
@@ -168,7 +167,9 @@ function createNewEvent() {
     });
     addNewEvent.addEventListener("click", async (e) => {
         e.preventDefault();
-
+        eventInputAdd.value = "";
+        startDateInputAdd.value = "";
+        endDateInputAdd.value = "";
         eventNew.appendChild(tdEventInputAdd);
         eventNew.appendChild(tdStartDateInputAdd);
         eventNew.appendChild(tdEndDateInputAdd);
